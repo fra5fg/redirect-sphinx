@@ -1,0 +1,11 @@
+<script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("key") || "";
+
+    const target = "https://www.sphinxonline.com/surveyserver/s/crtnormandie/EnquetedeconjonctureTest/test_ultime";
+    const url = target + "?key=" + encodeURIComponent(key);
+
+    window.location.replace(url);
+  })();
+</script>
