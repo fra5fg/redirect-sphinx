@@ -1,11 +1,20 @@
-<script>
-  (function () {
-    const params = new URLSearchParams(window.location.search);
-    const key = params.get("key") || "";
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Redirection</title>
+    <script>
+      (async function () {
+        const params = new URLSearchParams(window.location.search);
+        const key = params.get("key") || "";
 
-    const target = "https://www.sphinxonline.com/surveyserver/s/crtnormandie/EnquetedeconjonctureTest/test_autre_lien_git2";
-    const url = target + "?key=" + encodeURIComponent(key);
+        const response = await fetch("./target.txt", { cache: "no-store" });
+        const target = (await response.text()).trim();
 
-    window.location.replace(url);
-  })();
-</script>
+        window.location.replace(target + "?key=" + encodeURIComponent(key));
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
